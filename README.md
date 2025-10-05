@@ -1,6 +1,10 @@
 # 🌌 Exoplanet Prediction Dashboard
 
+[![Live Demo](https://img.shields.io/badge/🚀-Live%20Demo-06b6d4?style=for-the-badge&logo=netlify&logoColor=white)](https://teamorbitcode.netlify.app)
+
 A sophisticated web application that predicts and visualizes exoplanet characteristics using machine learning. This interactive dashboard allows users to input astronomical data and receive predictions about potential exoplanets, complete with detailed visualizations and accuracy metrics.
+
+🌐 **Live Demo:** [teamorbitcode.netlify.app](https://teamorbitcode.netlify.app)
 
 ![Dashboard Preview](meta.png)
 
@@ -122,7 +126,7 @@ This project is licensed under the MIT License - see the [LICENSE](LICENSE) file
 
 ---
 
-Made with ❤️ by [Your Name] | [GitHub Profile](https://github.com/yourusername)
+Made with ❤️ by Safwat | [GitHub Profile](https://github.com/safwatemergent-svg)
 
 [![License: MIT](https://img.shields.io/badge/License-MIT-yellow.svg)](https://opensource.org/licenses/MIT)
-[![GitHub stars](https://img.shields.io/github/stars/yourusername/orbit-code?style=social)](https://github.com/yourusername/orbit-code/stargazers)
+[![GitHub stars](https://img.shields.io/github/stars/safwatemergent-svg/orbit-code?style=social)](https://github.com/safwatemergent-svg/orbit-code/stargazers)
