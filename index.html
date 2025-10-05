@@ -1,0 +1,369 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Orbit Code - Solar System Explorer</title>
+    <link rel="stylesheet" href="style.css">
+    <link href="https://fonts.googleapis.com/css2?family=Orbitron:wght@400;700;900&display=swap" rel="stylesheet">
+    <script src="//cdn.jsdelivr.net/npm/three-globe"></script>
+    <script src="https://unpkg.com/three/build/three.min.js"></script>
+    <script src="https://unpkg.com/globe.gl"></script>
+</head>
+<body>
+    <!-- Loading Screen -->
+    <div id="loading-screen" class="loading-screen">
+        <div class="starry-background"></div>
+        <div class="loading-content">
+            <div class="loading-title">ORBIT CODE</div>
+            <div class="loading-orbit-enhanced"></div>
+            <div class="loading-text">Initializing Universe Explorer...</div>
+            <div class="loading-dots">
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+                <div class="loading-dot"></div>
+            </div>
+            <!-- Orbital Rings -->
+            <div class="orbital-ring ring-1"></div>
+            <div class="orbital-ring ring-2"></div>
+            <div class="orbital-ring ring-3"></div>
+        </div>
+    </div>
+
+    <!-- Main App -->
+    <div id="app" class="app hidden">
+        <div class="starry-background"></div>
+        
+        <!-- Header -->
+        <header id="header" class="header">
+            <nav class="glass-navbar">
+                <div class="nav-content">
+                    <a href="#" class="logo">
+                        <div class="logo-icon">
+                            <svg class="sparkles-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/>
+                            </svg>
+                        </div>
+                        <div class="logo-text">ORBIT CODE</div>
+                    </a>
+
+                    <!-- Desktop Navigation -->
+                    <div id="desktop-nav" class="desktop-nav hidden">
+                        <a href="#home" class="nav-link active" data-page="home">Home</a>
+                        <a href="#solar-system" class="nav-link" data-page="solar-system">Solar System</a>
+                        <a href="#about" class="nav-link" data-page="about">About</a>
+                        <a href="chatbot.html" class="nav-link" data-page="ask-ai">Ask AI</a>
+                    </div>
+
+                    <div id="nav-subtitle" class="nav-subtitle">Ready to Explore the Universe?</div>
+
+                    <!-- Mobile Menu Toggle -->
+                    <button id="mobile-toggle" class="mobile-toggle">
+                        <svg class="menu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <line x1="4" x2="20" y1="6" y2="6"/>
+                            <line x1="4" x2="20" y1="12" y2="12"/>
+                            <line x1="4" x2="20" y1="18" y2="18"/>
+                        </svg>
+                        <svg class="close-icon hidden" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M18 6 6 18"/>
+                            <path d="M6 6l12 12"/>
+                        </svg>
+                    </button>
+                </div>
+
+                <!-- Mobile Navigation -->
+                <div id="mobile-nav" class="mobile-nav hidden">
+                    <div class="mobile-nav-content">
+                        <a href="#home" class="mobile-nav-link" data-page="home">Home</a>
+                        <a href="#solar-system" class="mobile-nav-link" data-page="solar-system">Solar System</a>
+                        <a href="#about" class="mobile-nav-link" data-page="about">About</a>
+                        <a href="chatbot.html" class="mobile-nav-link" data-page="ask-ai">Ask AI</a>
+                    </div>
+                </div>
+            </nav>
+        </header>
+
+        <!-- Pages -->
+        <!-- Hero Page -->
+        <div id="hero-page" class="page active">
+            <div class="starry-background"></div>
+            <div id="hero-initial" class="hero-initial">
+                <div class="hero-content">
+                    <div class="hero-title floating-slow">ORBIT CODE</div>
+                    <div id="hero-subtitle" class="hero-subtitle"></div>
+                    <button id="explore-btn" class="explore-btn pulse-glow-enhanced">
+                        <div class="tech-grid"></div>
+                        <div class="tech-button-animation"></div>
+                        <div class="btn-content">
+                            <span>Begin Exploration</span>
+                            <div class="tech-icon-container">
+                                <div class="rotating-ring"></div>
+                                <div class="tech-icon-bg">
+                                    <svg class="cpu-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <rect width="16" height="16" x="4" y="4" rx="2"/>
+                                        <rect width="6" height="6" x="9" y="9" rx="1"/>
+                                        <path d="M15 2v2"/>
+                                        <path d="M15 20v2"/>
+                                        <path d="M2 15h2"/>
+                                        <path d="M20 15h2"/>
+                                        <path d="M2 9h2"/>
+                                        <path d="M20 9h2"/>
+                                        <path d="M9 2v2"/>
+                                        <path d="M9 20v2"/>
+                                    </svg>
+                                </div>
+                                <div class="scanning-line"></div>
+                            </div>
+                        </div>
+                    </button>
+                    <!-- Floating Orbs -->
+                    <div class="floating-orbs">
+                        <div class="floating-orb orb-1"></div>
+                        <div class="floating-orb orb-2"></div>
+                        <div class="floating-orb orb-3"></div>
+                        <div class="floating-orb orb-4"></div>
+                        <div class="floating-orb orb-5"></div>
+                        <div class="floating-orb orb-6"></div>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Full Hero View -->
+            <div id="hero-full" class="hero-full hidden">
+                <div class="hero-full-content">
+                    <div class="hero-full-title">ORBIT CODE</div>
+                    <div class="hero-full-subtitle">Advanced Space Technology Platform</div>
+                    <div class="hero-buttons">
+                        <a href="#solar-system" class="hero-button" data-page="solar-system">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <polygon points="5,3 19,12 5,21 12,12"/>
+                            </svg>
+                            <span>Explore Solar System</span>
+                        </a>
+                        <a href="chatbot.html" class="hero-button" data-page="ask-ai">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/>
+                            </svg>
+                            <span>Ask AI Assistant</span>
+                        </a>
+                    </div>
+
+                    <!-- Features Section -->
+                    <div class="features-section">
+                        <h2 class="features-title">Platform Features</h2>
+                        <div class="features-grid">
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                                        <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                                        <path d="M9 12H4s.55-3.03 2-4c1.62-1.08 5 0 5 0"/>
+                                        <path d="M12 15v5s3.03-.55 4-2c1.08-1.62 0-5 0-5"/>
+                                    </svg>
+                                </div>
+                                <h3>Space Exploration</h3>
+                                <p>Journey through the cosmos with our interactive 3D models and real-time data</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M9.937 15.5A2 2 0 0 0 8.5 14.063l-6.135-1.582a.5.5 0 0 1 0-.962L8.5 9.937A2 2 0 0 0 9.937 8.5l1.582-6.135a.5.5 0 0 1 .962 0L14.063 8.5A2 2 0 0 0 15.5 9.937l6.135 1.582a.5.5 0 0 1 0 .962L15.5 14.063a2 2 0 0 0-1.437 1.437l-1.582 6.135a.5.5 0 0 1-.962 0z"/>
+                                    </svg>
+                                </div>
+                                <h3>AI-Powered Insights</h3>
+                                <p>Get intelligent answers about celestial phenomena and cosmic mysteries</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <circle cx="12" cy="12" r="10"/>
+                                        <path d="M12 2a14.5 14.5 0 0 0 0 20 14.5 14.5 0 0 0 0-20"/>
+                                        <path d="M2 12h20"/>
+                                    </svg>
+                                </div>
+                                <h3>Real-time Data</h3>
+                                <p>Access live astronomical data and planetary movement tracking</p>
+                            </div>
+                            <div class="feature-card">
+                                <div class="feature-icon">
+                                    <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                        <path d="M6 3v12"/>
+                                        <circle cx="6" cy="21" r="3"/>
+                                        <path d="M18 9a3 3 0 1 1 0-6 3 3 0 0 1 0 6z"/>
+                                        <path d="M18 20.02c.69-.71 2.04-1.02 3.5-1.02 .84 0 1.66.18 2.48.46"/>
+                                        <path d="M8.5 8.5c-.65-.65-.8-1.2-.8-2.2 0-1.26 1.22-2.3 2.55-2.3S12.8 5.04 12.8 6.3c0 1-.15 1.55-.8 2.2"/>
+                                    </svg>
+                                </div>
+                                <h3>Advanced Analytics</h3>
+                                <p>Analyze cosmic events and predict astronomical phenomena</p>
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Solar System Page -->
+        <div id="solar-system-page" class="page">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1 class="page-title">Solar System</h1>
+                    <p class="page-subtitle">Interactive 3D model of our solar system</p>
+                </div>
+
+                <div class="solar-system-viewer">
+                    <div class="viewer-controls">
+                        <button class="control-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M3 12a9 9 0 0 1 9-9 9.75 9.75 0 0 1 6.74 2.74L21 8"/>
+                                <path d="M21 3v5h-5"/>
+                                <path d="M21 12a9 9 0 0 1-9 9 9.75 9.75 0 0 1-6.74-2.74L3 16"/>
+                                <path d="M8 16H3v5"/>
+                            </svg>
+                        </button>
+                        <div class="viewer-title">Solar System Explorer</div>
+                        <button class="control-btn fullscreen-btn">
+                            <svg viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                                <path d="M8 3H5a2 2 0 0 0-2 2v3m18 0V5a2 2 0 0 0-2-2h-3m0 18h3a2 2 0 0 0 2-2v-3M3 16v3a2 2 0 0 0 2 2h3"/>
+                            </svg>
+                        </button>
+                    </div>
+                    <div class="iframe-container">
+                        <iframe 
+                            src="https://www.solarsystemscope.com/iframe" 
+                            title="Solar System 3D Model"
+                            class="solar-system-iframe">
+                        </iframe>
+                        <div class="overlay-instructions">
+                            <p>Use mouse to navigate • Scroll to zoom</p>
+                        </div>
+                    </div>
+                </div>
+
+                <!-- Planets Info -->
+                <div class="planets-section">
+                    <h2 class="section-title">Planetary Information</h2>
+                    <div class="planets-grid">
+                        <div class="planet-card" data-planet="mercury">
+                            <h3>Mercury</h3>
+                            <p><strong>Distance:</strong> 57.9 million km from Sun</p>
+                            <p><strong>Diameter:</strong> 4,879 km</p>
+                            <p class="planet-facts">Closest planet to the Sun, extreme temperatures</p>
+                        </div>
+                        <div class="planet-card" data-planet="venus">
+                            <h3>Venus</h3>
+                            <p><strong>Distance:</strong> 108.2 million km from Sun</p>
+                            <p><strong>Diameter:</strong> 12,104 km</p>
+                            <p class="planet-facts">Hottest planet, thick atmosphere of carbon dioxide</p>
+                        </div>
+                        <div class="planet-card" data-planet="mars">
+                            <h3>Mars</h3>
+                            <p><strong>Distance:</strong> 227.9 million km from Sun</p>
+                            <p><strong>Diameter:</strong> 6,792 km</p>
+                            <p class="planet-facts">Red planet, has polar ice caps and largest volcano</p>
+                        </div>
+                        <div class="planet-card" data-planet="jupiter">
+                            <h3>Jupiter</h3>
+                            <p><strong>Distance:</strong> 778.5 million km from Sun</p>
+                            <p><strong>Diameter:</strong> 142,984 km</p>
+                            <p class="planet-facts">Largest planet, Great Red Spot storm, 95 moons</p>
+                        </div>
+                        <div class="planet-card" data-planet="saturn">
+                            <h3>Saturn</h3>
+                            <p><strong>Distance:</strong> 1.43 billion km from Sun</p>
+                            <p><strong>Diameter:</strong> 120,536 km</p>
+                            <p class="planet-facts">Famous ring system, 146 moons, low density</p>
+                        </div>
+                        <div class="planet-card" data-planet="uranus">
+                            <h3>Uranus</h3>
+                            <p><strong>Distance:</strong> 2.87 billion km from Sun</p>
+                            <p><strong>Diameter:</strong> 51,118 km</p>
+                            <p class="planet-facts">Ice giant, rotates on its side, faint rings</p>
+                        </div>
+                        <div class="planet-card" data-planet="neptune">
+                            <h3>Neptune</h3>
+                            <p><strong>Distance:</strong> 4.50 billion km from Sun</p>
+                            <p><strong>Diameter:</strong> 49,528 km</p>
+                            <p class="planet-facts">Windiest planet, deep blue color, 16 moons</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- About Page -->
+        <div id="about-page" class="page">
+            <div class="page-content">
+                <div class="page-header">
+                    <h1 class="page-title">About ORBIT CODE</h1>
+                    <p class="page-subtitle">Pioneering the future of space exploration through cutting-edge technology</p>
+                </div>
+
+                <div class="about-mission">
+                    <h2>Our Mission</h2>
+                    <p>At Orbit Code, we believe that understanding our universe is fundamental to human progress. Our mission is to make space exploration accessible to everyone through advanced visualization tools, real-time data analysis, and AI-powered insights.</p>
+                    <p>We combine cutting-edge technology with scientific accuracy to create interactive experiences that inspire curiosity and advance our collective knowledge of the cosmos.</p>
+                </div>
+
+                <div class="stats-grid">
+                    <div class="stat-card">
+                        <div class="stat-number">99.9%</div>
+                        <div class="stat-label">Accuracy Rate</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">1M+</div>
+                        <div class="stat-label">Data Points</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">50+</div>
+                        <div class="stat-label">Planets Mapped</div>
+                    </div>
+                    <div class="stat-card">
+                        <div class="stat-number">24/7</div>
+                        <div class="stat-label">Live Monitoring</div>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <!-- Ask AI Page - Now redirects to chatbot.html -->
+
+        <!-- Footer -->
+        <footer id="footer" class="footer hidden">
+            <div class="footer-content">
+                <div class="footer-brand">
+                    <div class="footer-logo">
+                        <svg class="footer-icon" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2">
+                            <path d="M4.5 16.5c-1.5 1.26-2 5-2 5s3.74-.5 5-2c.71-.84.7-2.13-.09-2.91a2.18 2.18 0 0 0-2.91-.09z"/>
+                            <path d="m12 15-3-3a22 22 0 0 1 2-3.95A12.88 12.88 0 0 1 22 2c0 2.72-.78 7.5-6 11a22.35 22.35 0 0 1-4 2z"/>
+                        </svg>
+                        <span>ORBIT CODE</span>
+                    </div>
+                    <p>Pioneering the future of space exploration through cutting-edge technology and AI-powered insights.</p>
+                </div>
+                <div class="footer-links">
+                    <div class="footer-section">
+                        <h3>Quick Links</h3>
+                        <a href="#home">Home</a>
+                        <a href="#solar-system">Solar System</a>
+                        <a href="#about">About</a>
+                        <a href="chatbot.html">Ask AI</a>
+                    </div>
+                    <div class="footer-section">
+                        <h3>Resources</h3>
+                        <a href="#">Documentation</a>
+                        <a href="#">API Reference</a>
+                        <a href="#">Support Center</a>
+                        <a href="#">Privacy Policy</a>
+                    </div>
+                </div>
+            </div>
+            <div class="footer-bottom">
+                <p>&copy; 2024 Orbit Code. All rights reserved.</p>
+            </div>
+        </footer>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html>
